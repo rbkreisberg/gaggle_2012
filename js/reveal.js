@@ -841,8 +841,9 @@ var Reveal = (function(){
 			if ( isNaN(outline_index = parseInt(currentSlide.getAttribute('data-outline')))) { 
 				dom.outline.style.display = 'none';
 			} else {				
-				if ( ( current = dom.outline.children[outline_index] ).classList.contains('current')) {
-					current.classList.remove('current');
+				//same one again
+				if ( !( current = dom.outline.children[outline_index] ).classList.contains('current')) {
+					Array.prototype.map.call(dom.outline.children,function(c) {c.classList.remove('current');});
 				}
 				dom.outline.children[outline_index].classList.add('current');
 				dom.outline.style.display = 'block';

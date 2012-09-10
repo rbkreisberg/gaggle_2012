@@ -141,19 +141,17 @@ body {
 	line-height: 0.9em;
 }
 .reveal .outline span {
-	font-size: 12px;
-	font-weight: 200;
+	font-size: 22px;
+	font-weight: 600;
 	letter-spacing: -0.02em;
 	color: black !important;
-	margin-right:30px;
+	margin-right:60px;
 }
 
-.reveal .outline span .current{
-	font-size: 12px;
-	font-weight: 400;
-	letter-spacing: -0.02em;
-	color: black !important;
-	margin-right:30px;
+.reveal .outline span.current{
+	font-size: 26px;
+	font-weight: 600;
+	
 }
 
 

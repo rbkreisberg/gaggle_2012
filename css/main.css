@@ -298,7 +298,8 @@ body {
 	position: fixed;
 	display: none;
 	height: 3px;
-	bottom: 10;
+	margin-bottom:60px;
+	bottom: 0;
 	left: 0;
 }
 
@@ -415,11 +416,11 @@ body {
 .reveal .slides {
 	position: absolute;
 	max-width: 900px;
-	width: 80%;
-	height: 60%;
+	width: 90%;
+	height: 90%;
 	left: 50%;
-	top: 50%;
-	margin-top: -320px;
+	top: 0px;
+	margin-top: 0px;
 	padding: 20px 0px;
 	overflow: visible;
 	
