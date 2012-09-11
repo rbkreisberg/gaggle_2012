@@ -68,7 +68,7 @@
 						<ul>
 							<li>Introduction</li>
 							<li>HTML5</li>
-							<li>D3</li>
+							<li>D3 + CSS3 + SVG</li>
 					</p>
 
 					<aside class="notes">
@@ -85,7 +85,7 @@
 						<h2>What can Interactive Vis do for me?</h2>
 						<p>
 									<ul>
-						<li class="fragment">Convey meaning</li>
+						<li>Convey meaning</li>
 						<li class="fragment">Manage the 3 hurdles of data...<br><em>Scope</em>, <em>Scale</em>,
 							<em> Complexity</em></li>
 						<li class="fragment">Provide supporting data and context </li>
@@ -179,218 +179,258 @@ d3.select(&#39;.mutations li:first&#39;) == &lt;li&gt;1&lt;/li&gt;</code></pre>
 						</g>
 					</svg>
 </section>
+<section>
+	<h2>ECMAScript5</h2>
+	And the HTML Document API!<br/>
+	<p>
+		Javascript is growing (ES6 is coming) into a full featured tool.  It enables a growing number of interactions between the user, the browser, and the data.
+	</p>
+	<iframe frameborder="0" height="400" width="500" src="http://www.google.com/logos/verne_hd.html"></iframe><br/>
+	</section>
 </section>
 <article title="Tutorial"></article>
 				<section class="no-outline">
 					<h2>D3.js</h2> 
 					<a href="http://d3js.org" target="_blank">d3js.org</a>
 					<p>
-						Javascript library that ties data directly to the document (DOM).  Created by the author of Protovis, Mike Bostock.  Several other regular contributors on the project.
+						Javascript library that joins data to the document (DOM).  Created by the author of Protovis, Mike Bostock.  Several other regular contributors on the project.
 					</p><p>
-						D3 is not rigidly coupled to SVG.  SVG lends itself to functional operations.  D3 does provide high level generators for creating SVG objects quickly.						
+						D3 is not rigidly coupled to SVG.  
+						SVG lends itself to functional operations.  
+						D3 does provide high level generators for creating SVG objects quickly.						
 					</p>
 				</section>
 				
 				<section>
 					<h2>Let's Make Something</h2>
-					<p>
-					<iframe name="result" frameborder="0" height="400" width="500" src="http://fiddle.jshell.net/rbkreisberg/vebNt/show/"></iframe><br/>
-					
-						Scatterplot with: axes, ticks, labels, spline interpolation, event-driven (dynamic) behavior, 
-						periodic updates.
-					</p>
+					<a href="http://jsfiddle.net/rbkreisberg/cdpcX/" target="_blank">jsfiddle.net/rbkreisberg/cdpcX/</a>
+					<iframe frameborder="0" height="400" width="500" src="http://jsfiddle.net/rbkreisberg/cdpcX/show/"></iframe><br/>
+					<br/>
+						Scatterplot with: axes, ticks, labels, spline interpolation, event-driven behavior, 
+						periodic behavior.
 				</section>
-
-				<section data-markdown>
-					## Markdown support
-					
-					For those of you who like that sort of thing. Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
-
-					<pre><code contenteditable style="margin-top: 20px;">&lt;section data-markdown&gt;
-  ## Markdown support
-
-  For those of you who like that sort of thing. 
-  Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
-&lt;/section&gt;
-					</code></pre>
-				</section>
-
+<section>
 				<section>
-					<h2>Transition Styles</h2>
-					<p>
-						You can select from different transitions, like: <br>
-						<a href="http://lab.hakim.se/reveal-js/?transition=cube">Cube</a> -
-						<a href="http://lab.hakim.se/reveal-js/?transition=page">Page</a> -
-						<a href="http://lab.hakim.se/reveal-js/?transition=concave">Concave</a> -
-						<a href="http://lab.hakim.se/reveal-js/?transition=linear">Linear</a>
-					</p>
+					<h2>Follow Along!</h2>
+					<a href="http://jsfiddle.net/rbkreisberg/cdpcX/1/" target="_blank">jsfiddle.net/rbkreisberg/cdpcX/1/</a>
+						<iframe frameborder="0" height="400" width="500" src="http://jsfiddle.net/rbkreisberg/cdpcX/1/show/"></iframe><br/>
 				</section>
-
 				<section>
-					<h2>Themes</h2>
-					<p>
-						Reveal.js comes with a few themes built in: <br>
-						<a href="http://lab.hakim.se/reveal-js/?theme=sky">Sky</a> -
-						<a href="http://lab.hakim.se/reveal-js/?theme=beige">Beige</a> -
-						<a href="http://lab.hakim.se/reveal-js/?theme=simple">Simple</a> -
-						<a href="http://lab.hakim.se/reveal-js/">Default</a>
-					</p>
-					<p>
-						<small>
-							* Theme demos are loaded after the presentation which leads to flicker. In production you should load your theme in the <code>&lt;head&gt;</code> using a <code>&lt;link&gt;</code>.
-						</small>
-					</p>
-				</section>
+<pre><code contenteditable style="font-size: 18px; margin-top: 20px;">var w = 450,
+    h = 300;
 
-				<section>
-					<section data-state="alert">
-						<h2>Global State</h2>
-						<p>
-							Set <code>data-state="something"</code> on a slide and <code>"something"</code>
-							will be added as a class to the document element when the slide is open. This lets you
-							apply broader style changes, like switching the background.
-						</p>
-						<a href="#/7/1" class="image">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section data-state="blackout">
-						<h2>"blackout"</h2>
-						<a href="#/7/2" class="image">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section data-state="soothe">
-						<h2>"soothe"</h2>
-						<a href="#/7/0" class="image">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="-webkit-transform: rotate(180deg);">
-						</a>
-					</section>
-				</section>
-				
-
-				<section data-state="customevent">
-					<h2>Custom Events</h2>
-					<p>
-						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
-					</p>
-					<pre><code contenteditable style="font-size: 18px; margin-top: 20px;">Reveal.addEventListener( 'customevent', function() {
-	console.log( '"customevent" has fired' );
-} );
-					</code></pre>
-				</section>
-
-				<section>
-					<h2>Clever Quotes</h2>
-					<p>
-						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						The nice thing about standards is that there are so many to choose from</q> and block:
-					</p>
-					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						For years there has been a theory that millions of monkeys typing at random on millions of typewriters would 
-						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.
-					</blockquote>
-				</section>
-				
-				<section>
-					<h2>Pretty Code</h2>
-					<pre><code contenteditable>
-function linkify( selector ) {
-  if( supports3DTransforms ) {
+//attach an svg object to the DOM.  Size it appropriately    
+var svg = d3.select('#plot')
+            .append('svg:svg')
+              .attr('width', w)
+              .attr('height', h);
     
-    var nodes = document.querySelectorAll( selector );
+//draw an outer border.
+    svg.append('rect')
+        .attr('x', '0')
+        .attr('y', '0')
+        .attr('width', w)
+        .attr('height', h)
+        .attr('stroke-width', '2')
+        .attr('stroke', 'black')
+        .attr('fill', 'none');        
 
-    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-      var node = nodes[i];
-
-      if( !node.className ) ) {
-        node.className += ' roll';
-      }
-    };
-  }
+         //attach a title to the graph using a svg:text object    
+    svg.append('text')
+        .attr('class', 'title')
+        .attr('x', w/2 - 40) //position in the center (sorta)
+        .attr('y', "14")
+        .text('Scatter Plot!');
 }
-					</code></pre>
-					<p>Courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
+</code></pre>
 				</section>
-				
+</section>
+<section>
 				<section>
-					<h2>Intergalactic Interconnections</h2>
-					<p>
-						You can link between slides internally,
-						<a href="#/2/3">like this</a>.
-					</p>
-				</section>
+					<h2>Data -> Rendered Circles</h2>
+					<h2>Change of Coordinates</h2>
+					<a href="http://jsfiddle.net/rbkreisberg/cdpcX/2/" target="_blank">jsfiddle.net/rbkreisberg/cdpcX/2/</a>
+						<iframe  frameborder="0" height="400" width="500" src="http://jsfiddle.net/rbkreisberg/cdpcX/2/show/"></iframe><br/>					
+</section>
+<section>
+	<h2>Create Axes</h2>
+		<iframe frameborder="0" height="350" width="500" src="http://jsfiddle.net/rbkreisberg/AyEm6/5/show/"></iframe>
+<pre><code contenteditable style="font-size: 18px; margin-top: 20px;">//x_scale maps the array index to the viewport
+var x_scale = d3.scale.linear()
+                  .domain([0,data_array.length-1])
+                  .range([0,viewport_width]);
 
-				<section>
-					<h2>Fragmented Views</h2>
-					<p>Hit the next arrow...</p>
-					<p class="fragment">... to step through ...</p>
-					<ol>
-						<li class="fragment"><code>any type</code></li>
-						<li class="fragment"><em>of view</em></li>
-						<li class="fragment"><strong>fragments</strong></li>
-					</ol>
+//invert the y_scale such that higher values is closer to the top
+var y_scale = d3.scale.linear()
+                  .domain([0,1000])
+                  .range([viewport_height,0]);
+</code></pre>
+		<pre><code contenteditable style="font-size: 18px; margin-top: 20px;">//d3 function to create an axis from x_scale with the domain flipped
+var x_axis = d3.svg.axis()
+                   .scale(x_scale.copy().domain([20,0]))//use the x_scale
+                   .tickSize(-screen_height)
+                   .ticks(5)
+                   .orient('bottom');
+    
+d3.select('.unclipped-area')
+  .append('g')
+    .attr('class','x_axis')
+    .attr('transform','translate(0,' + screen_height + ')')
+    .call(x_axis);  //call the axis generator
+        </pre></code>
+</section>
+<section>
+	Place Data in Viewport, Functionally
+	<pre><code contenteditable style="font-size: 18px; margin-top: 20px;">var data_array = [
+	{x:32, y:224}, //functionally, instead
+        {x:47, y:113},
+        {x:128, y:63},
+        {x:178, y:160},
+        ...
+        ];
+</code></pre>
+<pre><code contenteditable style="font-size: 18px; margin-top: 20px;">function drawCircles() {
+d3.select('.scatter_plot')
+  .selectAll('.data_point')
+  .data(data_array)
+  .enter()
+   .append('circle')  //add the circles
+    .attr('class', 'data_point')
+    .attr('cx', function(point) { return x_scale(point.x); })//use x for x
+    .attr('cy', function(point) { return y_scale(point.y); })//use y for y
+    .attr('r', 4 ) //radius of 4
+    .style('fill', 'blue' );//set style fill to blue
+}</code></pre>
+<p><svg width="400" height="300">
+	<circle cx="32" cy="224" r="20" style="fill:blue;"/>
+    <circle cx="82" cy="113" r="20" style="fill:blue;"/>    
+	<circle cx="132" cy="63" r="20" style="fill:blue;"/>
+    <circle cx="182" cy="160" r="20" style="fill:blue;"/>
+</svg>
+	</p>
 				</section>
-				
+</section>
+<section>
+					<section>
+						<h2>Data -> Color, Lines</h2>
+						<a href="http://jsfiddle.net/rbkreisberg/cdpcX/3/" target="_blank">jsfiddle.net/rbkreisberg/cdpcX/3/</a>
+							<iframe frameborder="0" height="400" width="500" src="http://jsfiddle.net/rbkreisberg/cdpcX/3/show/"></iframe><br/>	
+					</section>
 				<section>
-					<h2>Spectacular image!</h2>
-					<a class="image" href="http://hakim.se/experiments/html5/breakdom/" target="_blank">
-						<img width="320" height="412" src="https://s3.amazonaws.com/hakim-static/reveal-js/breakdom.png" alt="BreakDOM game screenshot">
-					</a>
-				</section>
-			
-				
-				<section>
-					<h2>Stellar Links</h2>
-					<ul>
-						<li><a href="https://github.com/hakimel/reveal.js">Source code on github</a></li>
-						<li><a href="http://hakim.se/projects/reveal-js">Read more on my site</a></li>
-						<li><a href="http://twitter.com/hakimel">Follow me on Twitter</a></li>
-					</ul>
-				</section>
+						<h2>Color by Value</h2>
+<pre><code contenteditable style="font-size: 18px; margin-top: 20px;">//defined the function from z values to color range
+    z_color_scale = d3.scale.linear()
+                    .domain([0,100])
+                    .range(['blue','red']);
 
+function drawCircles() {
+...
+     .append('circle')  //add the circles
+        .attr('class','data_point')
+        .attr('cx',function(point, i) { return x_scale(i); })//use index 
+        .attr('cy',function(point, i) { return y_scale(point.y); })
+        .attr('r',4)
+       .style('fill',function(point) { 
+            return z_color_scale(point.z);})
+}
+</code></pre>
+        <iframe frameborder="0" height="350" width="500" src="http://jsfiddle.net/rbkreisberg/AyEm6/6/show/"></iframe>
+</section>
+<section>
+	<h2>Connect the Dots</h2>
+<pre><code contenteditable style="font-size: 18px; margin-top: 20px;">//attach the data to a path object
+//assign the "d" attribute to the line creation function   
+function drawLine() {
+    d3.select('.line_plot')
+        .selectAll('.data_line')
+        .data([data_array])
+      .enter()
+      .append('path')
+        .attr('class','data_line')
+        .attr('d',create_line);
+}</code></pre>
+</section>
+</section>
+<section>
+				<section>
+					<h2>Animate with Transition()</h2>
+					<a href="http://jsfiddle.net/rbkreisberg/cdpcX/4/" target="_blank">jsfiddle.net/rbkreisberg/cdpcX/4/</a>
+						<iframe frameborder="0" height="400" width="500" src="http://jsfiddle.net/rbkreisberg/cdpcX/4/show/"></iframe><br/>	
+					</section>
+				<section>
+					<pre><code contenteditable style="font-size: 18px; margin-top: 20px;">function drawCircles() {
+    d3.select('.scatter_plot')
+...
+.on('mouseover',function()  {  //change size and color on mouseover
+	d3.select(this)
+	.transition()
+	  .duration(500)
+	  .attr('r', 15)
+	  .style('fill', 'black');
+	})
+.on('mouseout',function() {  //restore on mouseout
+  d3.select(this)
+    .transition()
+       .duration(500)
+       .attr( 'r', 4)                
+       .style( 'fill', function(point) { 
+             return z_color_scale(point.z); })
+});
+</code></pre>
+	<iframe frameborder="0" height="400" width="500" src="http://jsfiddle.net/rbkreisberg/AyEm6/7/show/"></iframe><br/>	
+				</section>
+</section>
+				<section>
+					<h2>Clip Away the Excess</h2>
+					<a href="http://jsfiddle.net/rbkreisberg/cdpcX/5/" target="_blank">jsfiddle.net/rbkreisberg/cdpcX/5/</a>
+					<pre><code contenteditable style="font-size: 18px; margin-top: 20px;">//clipPath prevents the data from bleeding over into other areas    
+svg.append("defs")
+   .append("clipPath")
+	  .attr("id", "clip")
+   .append("rect")
+	  .attr("width", w*0.8)
+	  .attr("height", h*0.8);
+
+//the plot area is inset from the border
+svg.append('g')
+     .attr('class','unclipped-area')  
+     .attr('transform' , 'translate(' + //x_offset, y_offset             
+     ir_x_offset + ',' + ir_y_offset + ')')     
+   .append('g')        
+     .attr('class','clipped-area')     
+     .attr("clip-path", "url(#clip)"); //attach clip</code></pre>
+					</section>
 				<section>
 					<section>
 								<h2>Resources</h2>
 								
-									D3.js - Mike Bostock - bost.ocks.org/mike/
-									<ul>
-										<li>d3js.org</li>
-										<li>github.com/mbostock/d3</li>
-										<li>D3 Google Groups</li>
-										<li>Stack Overflow</li>
-									</ul>
+									<h3>D3.js</h3>
+									Mike Bostock - bost.ocks.org/mike/<br/>
+										d3js.org<br/>
+										github.com/mbostock/d3<br/>
+										D3 Google Groups<br/>
+										Stack Overflow<br/>
 									
-									</section>
-									<section>
-									<h2>HTML, SVG, Javascript, R</h2>
-									<ul>
-										<li>w3schools.com</li>	
-										<li>learnsvg.com</li>
-										<li>svgbasics.com</li>
-										<li>codecademy.com</li>
-										<li><a href="https://polychart.com/js#examples" target="_blank">polychart.com/js </a></li>	
-									</ul>
+									<h3>HTML, SVG, Javascript, R</h3>
+										w3schools.com<br/>	
+										learnsvg.com<br/>
+										svgbasics.com<br/>
+										codecademy.com<br/>
+										<a href="https://polychart.com/js#examples" target="_blank">polychart.com/js </a>
 									</section>
 									<section>
 										<h2>Projects @ ISB</h2>
 						<p>
-							Regulome Explorer 
-							<h4>
+							Regulome Explorer <br/>
 								<a href="http://explorer.cancerregulome.org" target="_blank">explorer.cancerregulome.org
-							</a>
-							</h4>
-							Transcriptional Regulation & Epigenetic Landscape 
-							<h4>
+							</a><br/><br/>
+							Transcriptional Regulation & Epigenetic Landscape <br/>
 								<a href="http://trel.systemsbiology.net" target="_blank">trel.systemsbiology.net
-								</a>
-							</h4>
-							Pubcrawl
-							<h4>
+								</a><br/><br/>
+							Pubcrawl<br/>
 								<a href="pubcrawl.systemsbiology.net" target="_blank">pubcrawl.systemsbiology.net
-								</a>
-							</h4>
-</p>
+								</a><br/>
+</p><br/>
 Search 'codefor@systemsbiology.org' at code.google.com
 									</section>
 							</section>
@@ -472,8 +512,8 @@ Search 'codefor@systemsbiology.org' at code.google.com
     <script type="text/javascript" src="lib/circvis/js/circvis_demo.js"></script>
     <script type="text/javascript" src="lib/circvis/js/circvis_configure.js"></script>
 <script type="text/javascript">
-      var circle1;
-    circle1 = circvis.plot($('#wedge1').get(0));
+      var circle;
+    circle = circvis.plot($('#wedge1').get(0));
 </script>
 
 	</body>
