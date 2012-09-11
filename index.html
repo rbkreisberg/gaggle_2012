@@ -68,7 +68,7 @@
 						<ul>
 							<li>Introduction</li>
 							<li>HTML5</li>
-							<li>D3 + CSS3 + SVG</li>
+							<li>D3.js + CSS3 + SVG</li>
 					</p>
 
 					<aside class="notes">
@@ -151,14 +151,13 @@ d3.select(&#39;.mutations li:first&#39;) == &lt;li&gt;1&lt;/li&gt;</code></pre>
 					<h3>SVG</h3>
 <pre><code>&lt;svg id=&quot;updating-plot&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;
 	width=&quot;450&quot; height=&quot;200&quot;&gt;
-  &lt;g class=&quot;canvas&quot; transform=&quot;translate(25,15)&quot;&gt;
-    &lt;g class=&quot;axes&quot;&gt;&lt;/g&gt;
-    &lt;g class=&quot;labels&quot;&gt;&lt;/g&gt;
-    &lt;g class=&quot;data&quot;&gt;
-      &lt;circle cx=&quot;135&quot; cy=&quot;150&quot; fill=&quot;#F23&quot; stroke=&quot;none&quot; r=&quot;6&quot;/&gt;
-  &lt;/g&gt;
-  &lt;rect fill=&quot;none&quot; stroke=&quot;#0000FF&quot; stroke-width=&quot;2&quot;
-   x=&quot;60&quot; y=&quot;30&quot; width=&quot;100&quot; height=&quot;60&quot; transform=&quot;rotate(45)&quot;/&gt;
+ &lt;g class=&quot;canvas&quot; transform=&quot;translate(25,15)&quot;&gt;
+   &lt;g class=&quot;axes&quot;&gt;&lt;/g&gt;
+   &lt;g class=&quot;labels&quot;&gt;&lt;/g&gt;
+   &lt;g class=&quot;data&quot;&gt;
+     &lt;circle cx=&quot;135&quot; cy=&quot;150&quot; fill=&quot;#F23&quot; stroke=&quot;none&quot; r=&quot;6&quot;/&gt; &lt;/g&gt;
+ &lt;rect fill=&quot;none&quot; stroke=&quot;#0000FF&quot; stroke-width=&quot;2&quot;
+  x=&quot;60&quot; y=&quot;30&quot; width=&quot;100&quot; height=&quot;60&quot; transform=&quot;rotate(45)&quot;/&gt;
   &lt;path fill=&quot;none&quot; stroke=&quot;#444444&quot; stroke-width=&quot;2&quot;
     d=&quot;M40 70 L240 100&quot;/&gt;
   &lt;text x=&quot;100&quot; y=&quot;30&quot; class=&quot;label&quot;&gt;Hello World&lt;/text&gt;
@@ -251,6 +250,9 @@ var svg = d3.select('#plot')
 					<h2>Change of Coordinates</h2>
 					<a href="http://jsfiddle.net/rbkreisberg/cdpcX/2/" target="_blank">jsfiddle.net/rbkreisberg/cdpcX/2/</a>
 						<iframe  frameborder="0" height="340" width="500" src="http://jsfiddle.net/rbkreisberg/cdpcX/2/show/"></iframe><br/>					
+					</section>
+					<section>F(data) = Viewport.X<br/>
+							G(data) = Viewport.Y<br/>
 <pre><code contenteditable style="font-size: 18px;">//x_scale maps the array index to the viewport
 var x_scale = d3.scale.linear()
                   .domain([0,data_array.length-1])
@@ -263,21 +265,20 @@ var y_scale = d3.scale.linear()
 </code></pre>
 </section>
 <section>
-	<h2>Create Axes</h2>
-		<iframe frameborder="0" height="350" width="500" src="http://jsfiddle.net/rbkreisberg/AyEm6/5/show/"></iframe>
+	Create Axes<br/>
+		<iframe frameborder="0" height="340" width="500" src="http://jsfiddle.net/rbkreisberg/AyEm6/5/show/"></iframe>
 		<pre><code contenteditable style="font-size: 18px; ">//d3 function to create an axis from x_scale with the domain flipped
 var x_axis = d3.svg.axis()
-                   .scale(x_scale.copy().domain([20,0]))//use the x_scale
-                   .tickSize(-screen_height)
-                   .ticks(5)
-                   .orient('bottom');
+                .scale(x_scale.copy().domain([20,0]))//use the x_scale
+                .tickSize(-screen_height)
+                .ticks(5)
+                .orient('bottom');
     
 d3.select('.unclipped-area')
   .append('g')
     .attr('class','x_axis')
     .attr('transform','translate(0,' + screen_height + ')')
-    .call(x_axis);  //call the axis generator
-        </pre></code>
+    .call(x_axis);  //call the axis generator</pre></code>
 </section>
 <section>
 	Place Data in Viewport, Functionally
@@ -296,8 +297,8 @@ d3.select('.scatter_plot')
   .enter()
    .append('circle')  //add the circles
     .attr('class', 'data_point')
-    .attr('cx', function(point) { return x_scale(point.x); })//use x for x
-    .attr('cy', function(point) { return y_scale(point.y); })//use y for y
+    .attr('cx', function(point) { return x_scale(point.x); })
+    .attr('cy', function(point) { return y_scale(point.y); })
     .attr('r', 4 ) //radius of 4
     .style('fill', 'blue' );//set style fill to blue
 }</code></pre>
@@ -318,28 +319,21 @@ d3.select('.scatter_plot')
 					</section>
 				<section>
 						<h2>Color by Value</h2>
-<pre><code contenteditable style="font-size: 18px; ">//defined the function from z values to color range
-    z_color_scale = d3.scale.linear()
+<pre><code contenteditable style="font-size: 18px; ">z_color_scale = d3.scale.linear()
                     .domain([0,100])
                     .range(['blue','red']);
 
 function drawCircles() {
 ...
-     .append('circle')  //add the circles
-        .attr('class','data_point')
-        .attr('cx',function(point, i) { return x_scale(i); })//use index 
-        .attr('cy',function(point, i) { return y_scale(point.y); })
-        .attr('r',4)
+       .attr('r',4)
        .style('fill',function(point) { 
             return z_color_scale(point.z);})
 }
 </code></pre>
-        <iframe frameborder="0" height="350" width="500" src="http://jsfiddle.net/rbkreisberg/AyEm6/6/show/"></iframe>
+        <iframe frameborder="0" height="340" width="500" src="http://jsfiddle.net/rbkreisberg/AyEm6/6/show/"></iframe>
 </section>
 <section>
-	<h2>Connect the Dots</h2>
-<pre><code contenteditable style="font-size: 18px; ">//cardinal interpolation, or basis, linear, spline
-function setupRendering() {
+<pre><code contenteditable style="font-size: 18px;">function setupRendering() {
     // create the path based on the index and y values    
     create_line = d3.svg.line()
           .x(function(point,i) {return x_scale(i);})
@@ -348,16 +342,14 @@ function setupRendering() {
           .tension(0.7);
 }
 
-//attach the data to a path object
-//assign the "d" attribute to the line creation function   
 function drawLine() {
     d3.select('.line_plot')
         .selectAll('.data_line')
         .data([data_array])
       .enter()
-      .append('path')
+      .append('path')	//path = line
         .attr('class','data_line')
-        .attr('d',create_line);
+        .attr('d',create_line); // 'd' determines the path
 }</code></pre>
 <iframe frameborder="0" height="350" width="500" src="http://jsfiddle.net/rbkreisberg/AyEm6/2/show/"></iframe>
 </section>
@@ -390,11 +382,36 @@ function drawLine() {
 </code></pre>
 	<iframe frameborder="0" height="340" width="500" src="http://jsfiddle.net/rbkreisberg/AyEm6/7/show/"></iframe><br/>	
 				</section>
+				<section>
+<pre><code contenteditable style="font-size: 18px;">function appendDataPoint() {
+  data_array.push(createDataPoint());// push a new point onto the back
+    d3.select('.scatter_plot')
+        .selectAll('.data_point')
+        .remove();  //remove the circles
+
+      drawCircles(); //redraw circles       
+
+  d3.select('.data_plot')//move the parent panel of the circles to the left
+        .attr("transform", null) //reset translation to zero
+      .transition()  //begin the transition definition
+        .duration(1000)  //for 1000 msec
+        .ease("linear")  //at a constant rate        
+        .attr("transform", "translate(" + x_scale(-1) + ")") //go left!
+        .each("end", appendDataPoint);  //rinse and repeat
+  
+  data_array.shift(); // pop the oldest data point off of the array
+}
+</code></pre>
+					<iframe frameborder="0" height="400" width="500" src="http://jsfiddle.net/rbkreisberg/AyEm6/8/show/"></iframe><br/>	
+				</section>
 </section>
+<section>
 				<section>
 					<h2>Clip Away the Excess</h2>
 					<a href="http://jsfiddle.net/rbkreisberg/cdpcX/5/" target="_blank">jsfiddle.net/rbkreisberg/cdpcX/5/</a>
-					<iframe frameborder="0" height="400" width="500" src="http://jsfiddle.net/rbkreisberg/cdpcX/5/show/" target="_blank"></iframe>
+					<iframe frameborder="0" height="380" width="500" src="http://jsfiddle.net/rbkreisberg/cdpcX/5/show/" target="_blank"></iframe>
+				</section>
+				<section>
 					<pre><code contenteditable style="font-size: 18px; ">//clipPath prevents the data from bleeding over into other areas    
 svg.append("defs")
    .append("clipPath")
@@ -406,12 +423,14 @@ svg.append("defs")
 //the plot area is inset from the border
 svg.append('g')
      .attr('class','unclipped-area')  
-     .attr('transform' , 'translate(' + //x_offset, y_offset             
-     ir_x_offset + ',' + ir_y_offset + ')')     
+     .attr('transform' , 'translate(' + ir_x_offset + ',' + ir_y_offset + ')')     
    .append('g')        
      .attr('class','clipped-area')     
      .attr("clip-path", "url(#clip)"); //attach clip</code></pre>
+	<iframe frameborder="0" height="380" width="500" src="http://jsfiddle.net/rbkreisberg/AyEm6/10/show/" target="_blank"></iframe>
+
 					</section>
+				</section>
 				<section>
 					<section>
 								<h2>Resources</h2>
@@ -444,6 +463,12 @@ svg.append('g')
 								</a><br/>
 </p><br/>
 Search 'codefor@systemsbiology.org' at code.google.com
+									</section>
+									<section>
+										<br/><br><br>	
+										<code>
+										dick.kreisberg@systemsbiology.org
+									</code>									
 									</section>
 							</section>
 			
@@ -479,6 +504,9 @@ Search 'codefor@systemsbiology.org' at code.google.com
 				<a class="right" href="#">&#x25BA;</a>
 				<a class="up" href="#">&#x25B2;</a>
 				<a class="down" href="#">&#x25BC;</a>
+			</aside>
+			<aside style="margin-left:20px;margin-top:15px;">
+				<small>vis.systemsbiology.net/sbw_2012/</small>
 			</aside>
 
 			<div class="outline"></div>
