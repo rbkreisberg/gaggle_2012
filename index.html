@@ -185,7 +185,7 @@ d3.select(&#39;.mutations li:first&#39;) == &lt;li&gt;1&lt;/li&gt;</code></pre>
 	<p>
 		Javascript is growing (ES6 is coming) into a full featured tool.  It enables a growing number of interactions between the user, the browser, and the data.
 	</p>
-	<iframe frameborder="0" height="400" width="500" src="http://www.google.com/logos/verne_hd.html"></iframe><br/>
+	<iframe frameborder="0" height="340" width="800" src="http://www.google.com/logos/2012/moog12-hp.html"></iframe><br/>
 	</section>
 </section>
 <article title="Tutorial"></article>
@@ -213,10 +213,10 @@ d3.select(&#39;.mutations li:first&#39;) == &lt;li&gt;1&lt;/li&gt;</code></pre>
 				<section>
 					<h2>Follow Along!</h2>
 					<a href="http://jsfiddle.net/rbkreisberg/cdpcX/1/" target="_blank">jsfiddle.net/rbkreisberg/cdpcX/1/</a>
-						<iframe frameborder="0" height="400" width="500" src="http://jsfiddle.net/rbkreisberg/cdpcX/1/show/"></iframe><br/>
+						<iframe frameborder="0" height="340" width="500" src="http://jsfiddle.net/rbkreisberg/cdpcX/1/show/"></iframe><br/>
 				</section>
 				<section>
-<pre><code contenteditable style="font-size: 18px; margin-top: 20px;">var w = 450,
+<pre><code contenteditable style="font-size: 18px; ">var w = 450,
     h = 300;
 
 //attach an svg object to the DOM.  Size it appropriately    
@@ -250,12 +250,8 @@ var svg = d3.select('#plot')
 					<h2>Data -> Rendered Circles</h2>
 					<h2>Change of Coordinates</h2>
 					<a href="http://jsfiddle.net/rbkreisberg/cdpcX/2/" target="_blank">jsfiddle.net/rbkreisberg/cdpcX/2/</a>
-						<iframe  frameborder="0" height="400" width="500" src="http://jsfiddle.net/rbkreisberg/cdpcX/2/show/"></iframe><br/>					
-</section>
-<section>
-	<h2>Create Axes</h2>
-		<iframe frameborder="0" height="350" width="500" src="http://jsfiddle.net/rbkreisberg/AyEm6/5/show/"></iframe>
-<pre><code contenteditable style="font-size: 18px; margin-top: 20px;">//x_scale maps the array index to the viewport
+						<iframe  frameborder="0" height="340" width="500" src="http://jsfiddle.net/rbkreisberg/cdpcX/2/show/"></iframe><br/>					
+<pre><code contenteditable style="font-size: 18px;">//x_scale maps the array index to the viewport
 var x_scale = d3.scale.linear()
                   .domain([0,data_array.length-1])
                   .range([0,viewport_width]);
@@ -265,7 +261,11 @@ var y_scale = d3.scale.linear()
                   .domain([0,1000])
                   .range([viewport_height,0]);
 </code></pre>
-		<pre><code contenteditable style="font-size: 18px; margin-top: 20px;">//d3 function to create an axis from x_scale with the domain flipped
+</section>
+<section>
+	<h2>Create Axes</h2>
+		<iframe frameborder="0" height="350" width="500" src="http://jsfiddle.net/rbkreisberg/AyEm6/5/show/"></iframe>
+		<pre><code contenteditable style="font-size: 18px; ">//d3 function to create an axis from x_scale with the domain flipped
 var x_axis = d3.svg.axis()
                    .scale(x_scale.copy().domain([20,0]))//use the x_scale
                    .tickSize(-screen_height)
@@ -281,7 +281,7 @@ d3.select('.unclipped-area')
 </section>
 <section>
 	Place Data in Viewport, Functionally
-	<pre><code contenteditable style="font-size: 18px; margin-top: 20px;">var data_array = [
+	<pre><code contenteditable style="font-size: 18px; ">var data_array = [
 	{x:32, y:224}, //functionally, instead
         {x:47, y:113},
         {x:128, y:63},
@@ -289,7 +289,7 @@ d3.select('.unclipped-area')
         ...
         ];
 </code></pre>
-<pre><code contenteditable style="font-size: 18px; margin-top: 20px;">function drawCircles() {
+<pre><code contenteditable style="font-size: 18px; ">function drawCircles() {
 d3.select('.scatter_plot')
   .selectAll('.data_point')
   .data(data_array)
@@ -314,11 +314,11 @@ d3.select('.scatter_plot')
 					<section>
 						<h2>Data -> Color, Lines</h2>
 						<a href="http://jsfiddle.net/rbkreisberg/cdpcX/3/" target="_blank">jsfiddle.net/rbkreisberg/cdpcX/3/</a>
-							<iframe frameborder="0" height="400" width="500" src="http://jsfiddle.net/rbkreisberg/cdpcX/3/show/"></iframe><br/>	
+							<iframe frameborder="0" height="340" width="500" src="http://jsfiddle.net/rbkreisberg/cdpcX/3/show/"></iframe><br/>	
 					</section>
 				<section>
 						<h2>Color by Value</h2>
-<pre><code contenteditable style="font-size: 18px; margin-top: 20px;">//defined the function from z values to color range
+<pre><code contenteditable style="font-size: 18px; ">//defined the function from z values to color range
     z_color_scale = d3.scale.linear()
                     .domain([0,100])
                     .range(['blue','red']);
@@ -338,7 +338,17 @@ function drawCircles() {
 </section>
 <section>
 	<h2>Connect the Dots</h2>
-<pre><code contenteditable style="font-size: 18px; margin-top: 20px;">//attach the data to a path object
+<pre><code contenteditable style="font-size: 18px; ">//cardinal interpolation, or basis, linear, spline
+function setupRendering() {
+    // create the path based on the index and y values    
+    create_line = d3.svg.line()
+          .x(function(point,i) {return x_scale(i);})
+          .y(function(point) {return y_scale(point.y);})
+          .interpolate('cardinal')
+          .tension(0.7);
+}
+
+//attach the data to a path object
 //assign the "d" attribute to the line creation function   
 function drawLine() {
     d3.select('.line_plot')
@@ -349,6 +359,7 @@ function drawLine() {
         .attr('class','data_line')
         .attr('d',create_line);
 }</code></pre>
+<iframe frameborder="0" height="350" width="500" src="http://jsfiddle.net/rbkreisberg/AyEm6/2/show/"></iframe>
 </section>
 </section>
 <section>
@@ -358,7 +369,7 @@ function drawLine() {
 						<iframe frameborder="0" height="400" width="500" src="http://jsfiddle.net/rbkreisberg/cdpcX/4/show/"></iframe><br/>	
 					</section>
 				<section>
-					<pre><code contenteditable style="font-size: 18px; margin-top: 20px;">function drawCircles() {
+					<pre><code contenteditable style="font-size: 18px; ">function drawCircles() {
     d3.select('.scatter_plot')
 ...
 .on('mouseover',function()  {  //change size and color on mouseover
@@ -377,13 +388,14 @@ function drawLine() {
              return z_color_scale(point.z); })
 });
 </code></pre>
-	<iframe frameborder="0" height="400" width="500" src="http://jsfiddle.net/rbkreisberg/AyEm6/7/show/"></iframe><br/>	
+	<iframe frameborder="0" height="340" width="500" src="http://jsfiddle.net/rbkreisberg/AyEm6/7/show/"></iframe><br/>	
 				</section>
 </section>
 				<section>
 					<h2>Clip Away the Excess</h2>
 					<a href="http://jsfiddle.net/rbkreisberg/cdpcX/5/" target="_blank">jsfiddle.net/rbkreisberg/cdpcX/5/</a>
-					<pre><code contenteditable style="font-size: 18px; margin-top: 20px;">//clipPath prevents the data from bleeding over into other areas    
+					<iframe frameborder="0" height="400" width="500" src="http://jsfiddle.net/rbkreisberg/cdpcX/5/show/" target="_blank"></iframe>
+					<pre><code contenteditable style="font-size: 18px; ">//clipPath prevents the data from bleeding over into other areas    
 svg.append("defs")
    .append("clipPath")
 	  .attr("id", "clip")
